@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<GenerateEvergineContent>True</GenerateEvergineContent>
+		<GenerateEvergineAssets>False</GenerateEvergineAssets>
+		<GenerateEvergineScenesCode>True</GenerateEvergineScenesCode>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Evergine.Assets" Version="2025.3.18.1041" />
+		<PackageReference Include="Evergine.Common" Version="2025.3.18.1041" />
+		<PackageReference Include="Evergine.Components" Version="2025.3.18.1041" />
+		<PackageReference Include="Evergine.Framework" Version="2025.3.18.1041" />
+		<PackageReference Include="Evergine.Mathematics" Version="2025.3.18.1041" />
+		<PackageReference Include="Evergine.Bullet" Version="2025.3.18.1041" />
+		<PackageReference Include="Evergine.Targets" Version="2025.3.18.1041" />
+		<PackageReference Include="Evergine.CodeScenes" Version="2025.3.18.1041" />
+		<PackageReference Include="xunit.assert" Version="2.9.3" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Evergine.VisualTests\Evergine.VisualTests.csproj" />
+	</ItemGroup>
+</Project>
