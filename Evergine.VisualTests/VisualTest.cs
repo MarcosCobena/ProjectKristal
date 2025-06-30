@@ -21,7 +21,12 @@ namespace Evergine.VisualTests
             screenContextManager = Application.Current.Container.Resolve<ScreenContextManager>();
         }
 
-        public abstract void ArrangeActAssertScene(Entity camera);
+        public abstract void ArrangeActScene(Entity camera);
+
+        public virtual void AssertScene()
+        {
+            // Intentionally empty
+        }
 
         public bool EqualImages()
         {
@@ -43,7 +48,7 @@ namespace Evergine.VisualTests
                 .AddComponent(camera3D)
                 .AddComponent(new Transform3D());
             Managers.EntityManager.Add(camera);
-            ArrangeActAssertScene(camera);
+            ArrangeActScene(camera);
         }
 
         protected override void Update(TimeSpan gameTime)
@@ -63,6 +68,7 @@ namespace Evergine.VisualTests
                 }
 
                 camera3D!.FrameBuffer.ColorTargets[0].Texture.SaveToFile(graphicsContext, filePath);
+                this.AssertScene();
                 screenContextManager.Pop();
             }
         }

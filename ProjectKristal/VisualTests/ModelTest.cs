@@ -9,7 +9,7 @@ namespace ProjectKristal.VisualTests
 {
     internal class ModelTest : VisualTest
     {
-        public override void ArrangeActAssertScene(Entity camera)
+        public override void ArrangeActScene(Entity camera)
         {
             var cameraTransform = camera.FindComponent<Transform3D>();
             cameraTransform.Position = new Vector3(3);

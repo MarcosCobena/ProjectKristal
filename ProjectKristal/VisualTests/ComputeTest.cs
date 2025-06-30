@@ -11,7 +11,7 @@ namespace ProjectKristal.VisualTests
     internal class ComputeTest : VisualTest
     {
         // TODO @jcanton: encapsulate boilerplate code to make test smaller
-        public unsafe override void ArrangeActAssertScene(Entity camera)
+        public unsafe override void ArrangeActScene(Entity camera)
         {
             // Arrange
             var assetsService = Application.Current.Container.Resolve<AssetsService>();

@@ -11,7 +11,7 @@ namespace ProjectKristal.VisualTests
 {
     internal class EffectTest : VisualTest
     {
-        public override void ArrangeActAssertScene(Entity camera)
+        public override void ArrangeActScene(Entity camera)
         {
             var graphicsContext = Application.Current.Container.Resolve<GraphicsContext>();
             var shader = @"
