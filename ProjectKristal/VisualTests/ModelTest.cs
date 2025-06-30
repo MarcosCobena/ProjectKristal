@@ -16,7 +16,9 @@ namespace ProjectKristal.VisualTests
             cameraTransform.LookAt(Vector3.Zero, Vector3.Up);
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
             // TODO disable lighting
-            var material = assetsService.Load<Material>(EvergineContent.Materials.DefaultMaterial);
+            // FIXME EvergineContent.Materials.DefaultMaterial returns Guid.Empty;
+            // may it be because this scene is under a directory?
+            var material = assetsService.Load<Material>("02181b63-5a0e-46d1-9208-d92376ae33fb");
             var model = new Entity()
                 .AddComponent(new TeapotMesh())
                 .AddComponent(new MeshRenderer())
