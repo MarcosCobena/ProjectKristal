@@ -2,6 +2,7 @@
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.VisualTests;
+using Xunit;
 
 namespace ProjectKristal.VisualTests
 {
@@ -11,7 +12,7 @@ namespace ProjectKristal.VisualTests
         {
             var camera3D = camera.FindComponent<Camera3D>();
             camera3D.BackgroundColor = Color.Fuchsia;
-            // TODO @jcanton: Assert.EqualPixels();
+            Assert.True(this.EqualImages());
             // TODO @jcanton: Assert.EqualColorRGB/A(expectedColor, x, y);
         }
     }

@@ -7,6 +7,7 @@
   </PropertyGroup>
 	
   <ItemGroup>
+	<PackageReference Include="Codeuctivity.ImageSharpCompare" Version="4.1.342" />
     <PackageReference Include="Evergine.Assets" Version="2025.3.18.1041" />
     <PackageReference Include="Evergine.Common" Version="2025.3.18.1041" />
     <PackageReference Include="Evergine.Framework" Version="2025.3.18.1041" />

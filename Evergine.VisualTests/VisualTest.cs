@@ -1,4 +1,5 @@
-﻿using Evergine.Assets;
+﻿using Codeuctivity.ImageSharpCompare;
+using Evergine.Assets;
 using Evergine.Common.Graphics;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
@@ -21,6 +22,16 @@ namespace Evergine.VisualTests
         }
 
         public abstract void ArrangeActAssertScene(Entity camera);
+
+        public bool EqualImages()
+        {
+            var className = GetType().Name;
+            const string directoryName = "Screenshots";
+            var actualFilePath = Path.Combine(directoryName, $"{className}.png");
+            var expectedFilePath = Path.Combine(directoryName, $"{className}-expected.png");
+
+            return ImageSharpCompare.ImagesAreEqual(actualFilePath, expectedFilePath);
+        }
 
         protected override void CreateScene()
         {
