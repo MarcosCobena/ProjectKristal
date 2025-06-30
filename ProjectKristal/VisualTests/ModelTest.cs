@@ -18,6 +18,7 @@ namespace ProjectKristal.VisualTests
             // TODO disable lighting
             // FIXME EvergineContent.Materials.DefaultMaterial returns Guid.Empty;
             // may it be because this scene is under a directory?
+            // FIXME DefaultMaterial's Guid still returns null :-S
             var material = assetsService.Load<Material>("02181b63-5a0e-46d1-9208-d92376ae33fb");
             var model = new Entity()
                 .AddComponent(new TeapotMesh())
