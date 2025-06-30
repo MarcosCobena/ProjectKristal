@@ -23,7 +23,7 @@ namespace Evergine.VisualTests
 
         public abstract void ArrangeActScene(Entity camera);
 
-        public virtual void AssertScene()
+        public virtual void Assert()
         {
             // Intentionally empty
         }
@@ -68,7 +68,7 @@ namespace Evergine.VisualTests
                 }
 
                 camera3D!.FrameBuffer.ColorTargets[0].Texture.SaveToFile(graphicsContext, filePath);
-                this.AssertScene();
+                this.Assert();
                 screenContextManager.Pop();
             }
         }

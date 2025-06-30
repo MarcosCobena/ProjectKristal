@@ -14,10 +14,10 @@ namespace ProjectKristal.VisualTests
             camera3D.BackgroundColor = Color.Fuchsia;
         }
 
-        public override void AssertScene()
+        public override void Assert()
         {
             // FIXME it compares the screenshot from previous run, since current is taken after in Update()
-            Assert.True(this.EqualImages());
+            Xunit.Assert.True(this.EqualImages());
             // TODO @jcanton: Assert.EqualColorRGB/A(expectedColor, x, y);
         }
     }

@@ -52,7 +52,7 @@ namespace ProjectKristal.VisualTests
             exportQueue.WaitIdle();
             var mappedResource = graphicsContext.MapMemory(exportBuffer, MapMode.Read);
             var pointer = (uint*)mappedResource.Data;
-            Assert.Equal(1u, pointer[0]);
+            Xunit.Assert.Equal(1u, pointer[0]);
         }
     }
 }
