@@ -40,10 +40,23 @@ namespace ProjectKristal
             {
                 scenes = new Scene[]
                 {
-                    // Non-visual base so the last test can pop without leaving an empty stack
-                    new RegenerationTerminalScene(),
                     new BackgroundColorTest(),
                     new ModelTest(),
+                    // FIXME
+                    //System.InvalidOperationException
+                    //  HResult=0x80131509
+                    //  Mensaje = You can not pop when only exists one sceneContext
+                    //  Origen = Evergine.Framework
+                    //  Seguimiento de la pila:
+                    //   en Evergine.Framework.Services.ScreenContextManager.PopExecute(ScreenTransition transition, Boolean doDispose)
+                    //   en Evergine.Framework.ScreenContextCommands.PopContextCommand.Execute()
+                    //   en Evergine.Framework.Services.ScreenContextManager.Update(TimeSpan gameTime)
+                    //   en Evergine.Framework.Application.UpdateFrame(TimeSpan gameTime)
+                    //   en ProjectKristal.Windows.Program.<>c__DisplayClass5_0.<Main>b__1() en C:\Repositorios\ProjectKristal\ProjectKristal.Windows\Program.cs: línea 75
+                    //   en Evergine.Forms.RenderLoop.Run(Control form, Action renderCallback, Boolean useApplicationDoEvents)
+                    //   en Evergine.Forms.FormsWindowsSystem.CreateLoopThread(Action loadAction, Action renderCallback)
+                    //   en Evergine.Common.Graphics.WindowsSystem.Run(Action loadAction, Action renderCallback)
+                    //   en ProjectKristal.Windows.Program.Main(String[] args) en C:\Repositorios\ProjectKristal\ProjectKristal.Windows\Program.cs: línea 65
                 };
             }
             else
