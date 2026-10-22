@@ -3,6 +3,7 @@ using Evergine.Common.Helpers;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Services;
+using Evergine.VisualTests;
 using System;
 using System.Diagnostics;
 
@@ -14,6 +15,7 @@ namespace ProjectKristal.Windows
         static uint height = 720;
         static bool Windowed = true;
         static bool VSync = true;
+        static bool RegenerateScreenshots = false;
 
         static void Main(string[] args)
         {
@@ -26,7 +28,8 @@ namespace ProjectKristal.Windows
                     .AddOption(new CmdParser.Option("-Vsync", (string _) => { VSync = true; return true; }, "Active vertical sync."))
                     .AddOption(new CmdParser.Option("-NoVsync", (string _) => { VSync = false; return true; }, "Desactive vertical sync."))
                     .AddOption(new CmdParser.Option("-Windowed", (string _) => { Windowed = true; return true; }, "Set application to run in windowed mode."))
-                    .AddOption(new CmdParser.Option("-FullScreen", (string _) => { Windowed = false; return true; }, "Set application to run in fullscreen mode."));
+                    .AddOption(new CmdParser.Option("-FullScreen", (string _) => { Windowed = false; return true; }, "Set application to run in fullscreen mode."))
+                    .AddOption(new CmdParser.Option("-RegenerateScreenshots", (string _) => { RegenerateScreenshots = true; return true; }, "Regenerate visual test reference screenshots into the source folder and exit."));
 
                 var success = cmd.Parse(args);
 
@@ -51,6 +54,8 @@ namespace ProjectKristal.Windows
             var window = windowsSystem.CreateWindow("ProjectKristal - DX11", width, height);
 
             ConfigureGraphicsContext(application, window);
+
+            application.Container.Resolve<VisualTestSettings>().RegenerateScreenshots = RegenerateScreenshots;
 
 			// Creates XAudio device
             var xaudio = new global::Evergine.XAudio2.XAudioDevice();

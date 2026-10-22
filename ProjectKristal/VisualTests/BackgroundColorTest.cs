@@ -1,8 +1,7 @@
-﻿using Evergine.Common.Graphics;
+using Evergine.Common.Graphics;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.VisualTests;
-using Xunit;
 
 namespace ProjectKristal.VisualTests
 {
@@ -16,7 +15,6 @@ namespace ProjectKristal.VisualTests
 
         public override void Assert()
         {
-            // FIXME it compares the screenshot from previous run, since current is taken after in Update()
             Xunit.Assert.True(this.EqualImages());
             // TODO @jcanton: Assert.EqualColorRGB/A(expectedColor, x, y);
         }

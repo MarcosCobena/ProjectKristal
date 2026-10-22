@@ -8,7 +8,7 @@ using Xunit;
 
 namespace ProjectKristal.VisualTests
 {
-    internal class ComputeTest : VisualTest
+    internal class ComputeTest : NonVisualTest
     {
         // TODO @jcanton: encapsulate boilerplate code to make test smaller
         public unsafe override void ArrangeActScene(Entity camera)

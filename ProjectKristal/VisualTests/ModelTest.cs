@@ -27,5 +27,10 @@ namespace ProjectKristal.VisualTests
                 .AddComponent(new Transform3D());
             Managers.EntityManager.Add(model);
         }
+
+        public override void Assert()
+        {
+            Xunit.Assert.True(this.EqualImages());
+        }
     }
 }

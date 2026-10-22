@@ -21,4 +21,7 @@
   <ItemGroup>
     <None Include="Screenshots\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+  <ItemGroup>
+    <AssemblyMetadata Include="ScreenshotsSourceDir" Value="$(MSBuildProjectDirectory)\Screenshots" />
+  </ItemGroup>
 </Project>

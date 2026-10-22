@@ -9,7 +9,7 @@ using Evergine.VisualTests;
 
 namespace ProjectKristal.VisualTests
 {
-    internal class EffectTest : VisualTest
+    internal class EffectTest : NonVisualTest
     {
         public override void ArrangeActScene(Entity camera)
         {

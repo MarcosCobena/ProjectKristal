@@ -15,6 +15,35 @@ I am not sure whether will have time to work on it, so I have made it publicly a
 
 The goal? A public NuGet package (similar to Evergine.Mocks) which anyone can add to make source code directly related to graphics more maintanable.
 
+## Visual tests
+
+The test framework exposes three base classes:
+
+- `SceneTest`: base of all tests. Sets up a 1280x720 camera, lets each test build its scene with `ArrangeActScene(Entity)`, and at frame 2 runs the `SaveCapture()` → `Assert()` → `Pop()` cycle.
+- `VisualTest`: a test that compares an image capture against a reference (`-expected.png`). Use this for appearance checks; `Assert()` calls `EqualImages()`.
+- `NonVisualTest`: a test that validates data or compute without capturing or comparing images.
+
+### Running tests
+
+In `Debug` builds, the launcher pushes every test before loading `MyScene`, so visual and non-visual tests run inline every time you launch the app. `VisualTest`s write `{ClassName}.png` next to the launcher binary and compare it against `{ClassName}-expected.png` (copied from `ProjectKristal.Windows/Screenshots/` at build time). `NonVisualTest`s neither write nor compare.
+
+### Regenerating reference screenshots
+
+When a `VisualTest`'s expected output changes, regenerate the reference images from the launcher itself:
+
+```
+dotnet build ProjectKristal.Windows/ProjectKristal.Windows.csproj
+ProjectKristal.Windows/bin/Debug/net10.0-windows/ProjectKristal.Windows.exe -RegenerateScreenshots
+```
+
+In this mode the launcher:
+
+1. Runs only `VisualTest`s (non-visual tests are skipped).
+2. Writes each `{ClassName}-expected.png` directly into `ProjectKristal.Windows/Screenshots/` (the source folder tracked in git).
+3. Exits after the last test, without loading `MyScene`.
+
+Commit the updated `-expected.png` files. A subsequent normal launch compares against the new bases.
+
 ## Current state
 
 There are a bunch of TODOs through the source code with feedback/ideas on the next steps.
