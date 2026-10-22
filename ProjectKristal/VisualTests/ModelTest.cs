@@ -21,7 +21,8 @@ namespace ProjectKristal.VisualTests
                 .AddComponent(new TeapotMesh())
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new MaterialComponent() { Material = material })
-                .AddComponent(new Transform3D());
+                .AddComponent(new Transform3D())
+                .AddComponent(new Spinner { AxisIncrease = Vector3.One * 10 });
             Managers.EntityManager.Add(model);
         }
 
