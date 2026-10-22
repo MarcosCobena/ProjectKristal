@@ -1,7 +1,6 @@
 using System.Reflection;
 using Codeuctivity.ImageSharpCompare;
 using Evergine.Assets;
-using Evergine.Framework;
 
 namespace Evergine.VisualTests
 {
