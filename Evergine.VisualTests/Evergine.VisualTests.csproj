@@ -1,16 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-	
   <ItemGroup>
-	<PackageReference Include="Codeuctivity.ImageSharpCompare" Version="4.1.342" />
-    <PackageReference Include="Evergine.Assets" Version="2025.3.18.1041" />
-    <PackageReference Include="Evergine.Common" Version="2025.3.18.1041" />
-    <PackageReference Include="Evergine.Framework" Version="2025.3.18.1041" />
+    <PackageReference Include="Codeuctivity.ImageSharpCompare" Version="4.1.342" />
+    <PackageReference Include="Evergine.Assets" Version="2026.5.26.2553" />
+    <PackageReference Include="Evergine.Common" Version="2026.5.26.2553" />
+    <PackageReference Include="Evergine.Framework" Version="2026.5.26.2553" />
   </ItemGroup>
-
 </Project>
