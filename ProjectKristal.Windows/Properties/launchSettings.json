@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ProjectKristal.Windows": {
+      "commandName": "Project"
+    },
+    "Regenerate Screenshots": {
+      "commandName": "Project",
+      "commandLineArgs": "-RegenerateScreenshots"
+    }
+  }
+}
