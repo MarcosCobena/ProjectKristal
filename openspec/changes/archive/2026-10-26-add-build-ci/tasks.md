@@ -11,10 +11,10 @@
 
 ## 2. Verificación de la CI
 
-- [ ] 2.1 Hacer un push a `main` y confirmar que el workflow `build` se ejecuta automáticamente y termina en verde. Verificar: la pestaña Actions muestra el run del workflow disparado por el push a `main`.
-- [ ] 2.2 Abrir un PR hacia `main` y confirmar que el workflow `build` se ejecuta en el PR y termina en verde. Verificar: el PR muestra el chequeo `build` en estado passing.
-- [ ] 2.3 Confirmar que hacer un push a una rama que no es `main` no dispara el workflow. Verificar: no aparece run del workflow `build` para ese push en la pestaña Actions.
-- [ ] 2.4 Introducir un cambio que rompa la compilación en un PR (p. ej. un error de sintaxis C#) y confirmar que el workflow `build` finaliza en fallo. Verificar: el PR refleja el chequeo `build` en estado failing hasta que se revierte el cambio.
+- [x] 2.1 Hacer un push a `main` y confirmar que el workflow `build` se ejecuta automáticamente y termina en verde. Verificar: la pestaña Actions muestra el run del workflow disparado por el push a `main`.
+- [x] 2.2 Abrir un PR hacia `main` y confirmar que el workflow `build` se ejecuta en el PR y termina en verde. Verificar: el PR muestra el chequeo `build` en estado passing.
+- [x] 2.3 Confirmar que hacer un push a una rama que no es `main` no dispara el workflow. Verificar: no aparece run del workflow `build` para ese push en la pestaña Actions.
+- [x] 2.4 Introducir un cambio que rompa la compilación en un PR (p. ej. un error de sintaxis C#) y confirmar que el workflow `build` finaliza en fallo. Verificar: el PR refleja el chequeo `build` en estado failing hasta que se revierte el cambio.
 
 ## Workflow follow-up
 
