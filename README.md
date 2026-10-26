@@ -1,5 +1,9 @@
 # Project Kristal
 
+## Build status
+
+[![build](https://github.com/MarcosCobena/ProjectKristal/actions/workflows/build.yml/badge.svg)](https://github.com/MarcosCobena/ProjectKristal/actions)
+
 ## Introduction
 
 (The name Kristal comes from @Krixtalx, who patiently teached me (@MarcosCobena) compute shaders while working on Typhoon (previously PointNet). Thank you José Antonio! :-) )
