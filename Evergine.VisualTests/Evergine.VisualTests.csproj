@@ -5,9 +5,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Codeuctivity.ImageSharpCompare" Version="4.1.342" />
     <PackageReference Include="Evergine.Assets" Version="2026.5.26.2553" />
     <PackageReference Include="Evergine.Common" Version="2026.5.26.2553" />
     <PackageReference Include="Evergine.Framework" Version="2026.5.26.2553" />
+    <PackageReference Include="SkiaSharp" Version="3.119.4" />
   </ItemGroup>
 </Project>

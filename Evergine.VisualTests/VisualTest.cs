@@ -1,6 +1,4 @@
 using System.Reflection;
-using Codeuctivity.ImageSharpCompare;
-using Evergine.Assets;
 
 namespace Evergine.VisualTests
 {
@@ -9,13 +7,14 @@ namespace Evergine.VisualTests
         public sealed override void SaveCapture()
         {
             var className = GetType().Name;
+            var colorTexture = Camera3D!.FrameBuffer.ColorTargets[0].Texture;
 
             if (IsRegenerateMode())
             {
                 var sourceDir = GetScreenshotsSourceDir();
                 Directory.CreateDirectory(sourceDir);
                 var expectedFilePath = Path.Combine(sourceDir, $"{className}-expected.png");
-                Camera3D!.FrameBuffer.ColorTargets[0].Texture.SaveToFile(GraphicsContext, expectedFilePath);
+                PngSaver.SaveAsPng(GraphicsContext, colorTexture, expectedFilePath);
                 return;
             }
 
@@ -25,7 +24,7 @@ namespace Evergine.VisualTests
                 Directory.CreateDirectory(directoryName);
             }
             var actualFilePath = Path.Combine(directoryName, $"{className}.png");
-            Camera3D!.FrameBuffer.ColorTargets[0].Texture.SaveToFile(GraphicsContext, actualFilePath);
+            PngSaver.SaveAsPng(GraphicsContext, colorTexture, actualFilePath);
         }
 
         public bool EqualImages()
@@ -35,7 +34,13 @@ namespace Evergine.VisualTests
             var actualFilePath = Path.Combine(directoryName, $"{className}.png");
             var expectedFilePath = Path.Combine(directoryName, $"{className}-expected.png");
 
-            return ImageSharpCompare.ImagesAreEqual(actualFilePath, expectedFilePath);
+            var colorTexture = Camera3D!.FrameBuffer.ColorTargets[0].Texture;
+            var width = (int)colorTexture.Description.Width;
+            var height = (int)colorTexture.Description.Height;
+
+            var actual = PngSaver.ReadRgbaPixels(GraphicsContext, colorTexture);
+            var expected = PixelComparison.LoadExpectedRgba(expectedFilePath);
+            return PixelComparison.AreEqual(actual, expected, width, height);
         }
 
         private static string GetScreenshotsSourceDir()
