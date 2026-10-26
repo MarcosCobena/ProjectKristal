@@ -45,7 +45,7 @@ namespace Evergine.VisualTests
 
         private void OnDesactivatingScene(Scene scene)
         {
-            if (scene is SceneTest)
+            if (scene == this)
             {
                 s_activeSceneTestCount--;
             }
@@ -77,7 +77,7 @@ namespace Evergine.VisualTests
             base.Update(gameTime);
             frameCount++;
 
-            if (frameCount == 2)
+            if (frameCount == 3)
             {
                 this.SaveCapture();
                 if (!IsRegenerateMode())

@@ -19,7 +19,7 @@ The goal? A public NuGet package (similar to Evergine.Mocks) which anyone can ad
 
 The test framework exposes three base classes:
 
-- `SceneTest`: base of all tests. Sets up a 1280x720 camera, lets each test build its scene with `ArrangeActScene(Entity)`, and at frame 2 runs the `SaveCapture()` → `Assert()` → `Pop()` cycle.
+- `SceneTest`: base of all tests. Sets up a 1280x720 camera, lets each test build its scene with `ArrangeActScene(Entity)`, and at frame 3 runs the `SaveCapture()` → `Assert()` → `Pop()` cycle.
 - `VisualTest`: a test that compares an image capture against a reference (`-expected.png`). Use this for appearance checks; `Assert()` calls `EqualImages()`.
 - `NonVisualTest`: a test that validates data or compute without capturing or comparing images.
 
@@ -29,7 +29,7 @@ In `Debug` builds, the launcher pushes every test before loading `MyScene`, so v
 
 #### Time-dependent tests
 
-`ModelTest` (and any other test with time-driven animation) is captured at frame 2 of its scene. To keep the captured sprite's angle identical run-to-run, `MyApplication.UpdateFrame` feeds those test scenes a fixed 1/60 s step (defined as `SceneTest.FixedTimeStep` in `Evergine.VisualTests`) instead of the real frame delta measured by the `Stopwatch` in `ProjectKristal.Windows/Program.cs`. The fixed step applies **only while at least one `SceneTest` is alive** (tracked by a static counter incremented in the `SceneTest` constructor and decremented on `ScreenContextManager.OnDesactivatingScene`); when the last test is popped, production `MyScene` resumes with real elapsed time, so its animation is unaffected. See `openspec/changes/fixed-gametime-in-tests/design.md` for the rationale of this host-level guard.
+`ModelTest` (and any other test with time-driven animation) is captured at frame 3 of its scene. To keep the captured sprite's angle identical run-to-run, `MyApplication.UpdateFrame` feeds those test scenes a fixed 1/60 s step (defined as `SceneTest.FixedTimeStep` in `Evergine.VisualTests`) instead of the real frame delta measured by the `Stopwatch` in `ProjectKristal.Windows/Program.cs`. The fixed step applies **only while at least one `SceneTest` is alive** (tracked by a static counter incremented in the `SceneTest` constructor and decremented on `ScreenContextManager.OnDesactivatingScene`); when the last test is popped, production `MyScene` resumes with real elapsed time, so its animation is unaffected. See `openspec/changes/fixed-gametime-in-tests/design.md` for the rationale of this host-level guard.
 
 ### Regenerating reference screenshots
 
