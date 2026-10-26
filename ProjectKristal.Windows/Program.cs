@@ -17,7 +17,7 @@ namespace ProjectKristal.Windows
         static bool VSync = true;
         static bool RegenerateScreenshots = false;
 
-        static void Main(string[] args // BREAK-BUILD-TEST: missing closing parenthesis
+        static void Main(string[] args)
         {
             // Commandline parser
             if (args.Length > 0)
