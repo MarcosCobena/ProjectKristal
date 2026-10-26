@@ -27,6 +27,10 @@ The test framework exposes three base classes:
 
 In `Debug` builds, the launcher pushes every test before loading `MyScene`, so visual and non-visual tests run inline every time you launch the app. `VisualTest`s write `{ClassName}.png` next to the launcher binary and compare it against `{ClassName}-expected.png` (copied from `ProjectKristal.Windows/Screenshots/` at build time). `NonVisualTest`s neither write nor compare.
 
+#### Time-dependent tests
+
+`ModelTest` (and any other test with time-driven animation) is captured at frame 2 of its scene. To keep the captured sprite's angle identical run-to-run, `MyApplication.UpdateFrame` feeds those test scenes a fixed 1/60 s step (defined as `SceneTest.FixedTimeStep` in `Evergine.VisualTests`) instead of the real frame delta measured by the `Stopwatch` in `ProjectKristal.Windows/Program.cs`. The fixed step applies **only while at least one `SceneTest` is alive** (tracked by a static counter incremented in the `SceneTest` constructor and decremented on `ScreenContextManager.OnDesactivatingScene`); when the last test is popped, production `MyScene` resumes with real elapsed time, so its animation is unaffected. See `openspec/changes/fixed-gametime-in-tests/design.md` for the rationale of this host-level guard.
+
 ### Regenerating reference screenshots
 
 When a `VisualTest`'s expected output changes, regenerate the reference images from the launcher itself:

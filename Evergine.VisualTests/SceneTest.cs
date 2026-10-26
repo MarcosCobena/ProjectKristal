@@ -7,6 +7,7 @@ namespace Evergine.VisualTests
 {
     public abstract class SceneTest : Scene
     {
+        private static int s_activeSceneTestCount;
         private readonly GraphicsContext graphicsContext;
         private readonly ScreenContextManager screenContextManager;
         private Camera3D? camera3D;
@@ -17,8 +18,10 @@ namespace Evergine.VisualTests
 
         public SceneTest()
         {
+            s_activeSceneTestCount++;
             graphicsContext = Application.Current.Container.Resolve<GraphicsContext>();
             screenContextManager = Application.Current.Container.Resolve<ScreenContextManager>();
+            screenContextManager.OnDesactivatingScene += OnDesactivatingScene;
         }
 
         public abstract void ArrangeActScene(Entity camera);
@@ -34,6 +37,27 @@ namespace Evergine.VisualTests
         protected static bool IsRegenerateMode()
         {
             return Application.Current.Container.Resolve<VisualTestSettings>().RegenerateScreenshots;
+        }
+
+        public static bool IsAnyActive() => s_activeSceneTestCount > 0;
+
+        public static readonly System.TimeSpan FixedTimeStep = System.TimeSpan.FromSeconds(1.0 / 60.0);
+
+        private void OnDesactivatingScene(Scene scene)
+        {
+            if (scene is SceneTest)
+            {
+                s_activeSceneTestCount--;
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            if (disposing)
+            {
+                screenContextManager.OnDesactivatingScene -= OnDesactivatingScene;
+            }
         }
 
         protected override void CreateScene()

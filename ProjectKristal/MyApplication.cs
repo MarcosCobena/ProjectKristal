@@ -88,5 +88,11 @@ namespace ProjectKristal
             screenContextManager.To(screenContext);
 #endif
         }
+
+        public override void UpdateFrame(System.TimeSpan gameTime)
+        {
+            var step = SceneTest.IsAnyActive() ? SceneTest.FixedTimeStep : gameTime;
+            base.UpdateFrame(step);
+        }
     }
 }
