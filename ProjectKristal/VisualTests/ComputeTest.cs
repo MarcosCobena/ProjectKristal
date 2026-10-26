@@ -4,7 +4,6 @@ using Evergine.Framework.Graphics.Effects;
 using Evergine.Framework.Services;
 using Evergine.VisualTests;
 using System.Runtime.CompilerServices;
-using Xunit;
 
 namespace ProjectKristal.VisualTests
 {
